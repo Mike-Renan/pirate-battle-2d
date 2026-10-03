@@ -2,7 +2,7 @@
 
 A 2D top-down naval shooter game built with **React**, **TypeScript**, and **PixiJS v8**. Navigate your pirate ship through dangerous waters, dodge islands, destroy incoming enemy ships (Chasers & Shooters), and record your highest scores on a persistent local leaderboard and match history backed by MSW.
 
-🔗 **Live Public Demo**: [https://your-project-name.vercel.app](https://your-project-name.vercel.app)
+🔗 **Live Public Demo**: [[https://your-project-name.vercel.app](https://pirate-battle-2d.vercel.app/))
 
 ---
 
