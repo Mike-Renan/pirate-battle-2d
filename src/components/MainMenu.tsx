@@ -17,38 +17,46 @@ export const MainMenu: React.FC<MainMenuProps> = ({ config, onStartGame, onUpdat
   const { data: historyData, isLoading: loadingHistory } = useMatchHistory(historyPage);
 
   return (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundImage: 'url("/assets/ui_scene_background.png")',
+      backgroundSize: '100% 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: "'Trebuchet MS', Arial, sans-serif",
+      userSelect: 'none',
+      overflow: 'hidden',
+      margin: 0,
+      padding: 0,
+    }}
+  >
+    {/* PAINEL MOLDURA COM ASSET DE IMAGEM REAL DO PNG */}
     <div
       style={{
-        width: '100vw',
-        height: '100vh',
-        backgroundImage: 'url("/assets/ui_scene_background.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        width: 'min(92vw, 460px)',
+        minHeight: 'min(85vh, 400px)',
+        backgroundImage: 'url("/assets/png/default/ui/menu/panel_menu.png")',
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat',
+        padding: 'clamp(20px, 4vh, 40px) clamp(16px, 3vw, 35px)',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: "'Trebuchet MS', Arial, sans-serif",
-        userSelect: 'none',
+        justifyContent: 'space-between',
+        color: '#ffffff',
+        position: 'relative',
+        filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.7))',
+        boxSizing: 'border-box',
       }}
     >
-      {/* PAINEL MOLDURA COM ASSET DE IMAGEM REAL DO PNG */}
-      <div
-        style={{
-          width: '460px',
-          minHeight: '400px',
-          backgroundImage: 'url("/assets/png/default/ui/menu/panel_menu.png")',
-          backgroundSize: '100% 100%',
-          backgroundRepeat: 'no-repeat',
-          padding: '40px 35px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          color: '#ffffff',
-          position: 'relative',
-          filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.7))',
-        }}
-      >
         {/* BANNER DE TÍTULO PIRATE BATTLE COM IMAGEM PNG REAL */}
         <div style={{ textAlign: 'center', marginTop: '-15px' }}>
           <img

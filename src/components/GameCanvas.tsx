@@ -117,33 +117,108 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ config, onGameOver, onRe
   const formattedTime = `${minutes}:${seconds}`;
 
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh', backgroundColor: '#000000', overflow: 'hidden' }}>
-      <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: '#000000',
+        overflow: 'hidden',
+        margin: 0,
+        padding: 0,
+      }}
+    >
+      {/* CANVAS PIXIJS PREENCHENDO 100% DA TELA */}
+      <div
+        ref={containerRef}
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'block',
+        }}
+      />
 
-      <div style={{ position: 'absolute', top: '10px', right: '10px', display: 'flex', alignItems: 'center', gap: '6px', zIndex: 10 }}>
-        <div style={{ position: 'relative', width: '90px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="/assets/png/default/ui/hud/counter_panel.png" alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'fill' }} />
+      {/* HUD SUPERIOR RESPONSIVA */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          zIndex: 10,
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            width: '90px',
+            height: '34px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img
+            src="/assets/png/default/ui/hud/counter_panel.png"
+            alt=""
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'fill' }}
+          />
           <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: '4px' }}>
             <img src="/assets/png/default/ui/hud/icon_score.png" alt="Score" style={{ width: '16px', height: '16px' }} />
             <span style={{ color: '#ffffff', fontWeight: '900', fontSize: '13px' }}>{score}</span>
           </div>
         </div>
 
-        <div style={{ position: 'relative', width: '98px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src="/assets/png/default/ui/hud/counter_panel.png" alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'fill' }} />
+        <div
+          style={{
+            position: 'relative',
+            width: '98px',
+            height: '34px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img
+            src="/assets/png/default/ui/hud/counter_panel.png"
+            alt=""
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'fill' }}
+          />
           <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: '4px' }}>
             <img src="/assets/png/default/ui/hud/icon_time.png" alt="Time" style={{ width: '16px', height: '16px' }} />
             <span style={{ color: '#ffffff', fontWeight: '900', fontSize: '13px' }}>{formattedTime}</span>
           </div>
         </div>
 
-        <button onClick={togglePause} style={{ width: '36px', height: '36px', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
-          <img src="/assets/png/default/ui/controls/icon_pause.png" alt="Pause" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        <button
+          onClick={togglePause}
+          style={{ width: '36px', height: '36px', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+        >
+          <img
+            src="/assets/png/default/ui/controls/icon_pause.png"
+            alt="Pause"
+            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+          />
         </button>
       </div>
 
-      {/* D-PAD VIRTUAL TOUCH OFICIAL (CANTO INFERIOR ESQUERDO) */}
-      <div style={{ position: 'absolute', bottom: '16px', left: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', zIndex: 12 }}>
+      {/* D-PAD VIRTUAL TOUCH (CANTO INFERIOR ESQUERDO) */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '16px',
+          left: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '2px',
+          zIndex: 12,
+        }}
+      >
         <button
           onTouchStart={() => handleTouchControl('KeyW', true)}
           onTouchEnd={() => handleTouchControl('KeyW', false)}
@@ -180,16 +255,34 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ config, onGameOver, onRe
           onMouseUp={() => handleTouchControl('KeyS', false)}
           style={dpadBtnStyle}
         >
-          <img src="/assets/png/default/ui/controls/icon_forward.png" alt="Ré" style={{ width: '22px', height: '22px', transform: 'rotate(180deg)' }} />
+          <img
+            src="/assets/png/default/ui/controls/icon_forward.png"
+            alt="Ré"
+            style={{ width: '22px', height: '22px', transform: 'rotate(180deg)' }}
+          />
         </button>
       </div>
 
-      {/* BOTÕES TOUCH OFICIAIS DE TIRO (CANTO INFERIOR DIREITO) */}
-      <div style={{ position: 'absolute', bottom: '16px', right: '16px', display: 'flex', gap: '10px', alignItems: 'center', zIndex: 12 }}>
+      {/* BOTÕES DE TIRO TOUCH (CANTO INFERIOR DIREITO) */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '16px',
+          right: '16px',
+          display: 'flex',
+          gap: '10px',
+          alignItems: 'center',
+          zIndex: 12,
+        }}
+      >
         <button onClick={() => handleTouchFire('left')} style={dpadBtnStyle} title="Bordada Esquerda (Q)">
           <img src="/assets/png/default/ui/controls/icon_fire_left.png" alt="Tiro Esquerda" style={{ width: '26px', height: '26px' }} />
         </button>
-        <button onClick={() => handleTouchFire('front')} style={{ ...dpadBtnStyle, width: '58px', height: '58px' }} title="Tiro Frontal (Espaço)">
+        <button
+          onClick={() => handleTouchFire('front')}
+          style={{ ...dpadBtnStyle, width: '58px', height: '58px' }}
+          title="Tiro Frontal (Espaço)"
+        >
           <img src="/assets/png/default/ui/controls/icon_fire_front.png" alt="Tiro Frontal" style={{ width: '32px', height: '32px' }} />
         </button>
         <button onClick={() => handleTouchFire('right')} style={dpadBtnStyle} title="Bordada Direita (E)">
@@ -199,10 +292,38 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ config, onGameOver, onRe
 
       {/* OVERLAY DE PAUSA */}
       {isPaused && (
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 30 }}>
-          <div style={{ position: 'relative', width: '360px', maxWidth: '90vw', height: '340px', backgroundImage: 'url("/assets/png/default/ui/menu/panel_menu.png")', backgroundSize: '100% 100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '28px 20px', boxSizing: 'border-box' }}>
-            
-            <h2 style={{ color: '#ffffff', margin: '0 0 2px 0', fontSize: '22px', fontWeight: '900', letterSpacing: '1px' }}>PAUSED</h2>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 30,
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '360px',
+              maxWidth: '90vw',
+              height: '340px',
+              backgroundImage: 'url("/assets/png/default/ui/menu/panel_menu.png")',
+              backgroundSize: '100% 100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '28px 20px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <h2 style={{ color: '#ffffff', margin: '0 0 2px 0', fontSize: '22px', fontWeight: '900', letterSpacing: '1px' }}>
+              PAUSED
+            </h2>
             <p style={{ margin: '0 0 24px 0', fontSize: '11px', color: '#cbd5e1', fontWeight: 'bold' }}>Ready when you are.</p>
 
             {pauseView === 'main' ? (
@@ -210,7 +331,13 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ config, onGameOver, onRe
                 <button onClick={togglePause} style={pauseBtnStyle}>
                   RESUME
                 </button>
-                <button onClick={() => { soundManager.play('ui_click'); setPauseView('options'); }} style={pauseBtnStyle}>
+                <button
+                  onClick={() => {
+                    soundManager.play('ui_click');
+                    setPauseView('options');
+                  }}
+                  style={pauseBtnStyle}
+                >
                   OPTIONS
                 </button>
                 <button onClick={handleBackToMenuClick} style={pauseBtnStyle}>
@@ -229,7 +356,13 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ config, onGameOver, onRe
                 >
                   TOGGLE AUDIO
                 </button>
-                <button onClick={() => { soundManager.play('ui_click'); setPauseView('main'); }} style={pauseBtnStyle}>
+                <button
+                  onClick={() => {
+                    soundManager.play('ui_click');
+                    setPauseView('main');
+                  }}
+                  style={pauseBtnStyle}
+                >
                   BACK
                 </button>
               </div>
